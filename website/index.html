@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Voidskull</title>
+    <meta name="description" content="Explore the personal playground of a freelance website designer and developer. Featuring an interactive JS starscape, gaming logs, custom mods, and web engineering skills.">
+    <meta name="keywords" content="web developer, website designer, figma design, custom UI, lua scripting, starscape canvas, independent developer portfolio">
+    <meta name="author" content="Voidskull">
+    <link rel="canonical" href="https://voidskull.dev/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://voidskull.dev/">
+    <meta property="og:title" content="Voidskull | Web Design & Interactive Starscapes">
+    <meta property="og:description" content="Step into a custom-engineered portfolio featuring real-time star mapping, web design skills, custom modding projects, and personal interactive spaces.">
+    <meta property="og:image" content="https://voidskull.dev/assets/sprite.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://voidskull.dev/">
+    <meta property="twitter:title" content="Voidskull | Web Design & Interactive Starscapes">
+    <meta property="twitter:description" content="Step into a custom-engineered portfolio featuring real-time star mapping, web design skills, custom modding projects, and personal interactive spaces.">
+    <meta property="twitter:image" content="https://voidskull.dev/assets/sprite.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Voidskull",
+        "url": "https://voidskull.dev/",
+        "jobTitle": "Website Designer & Developer",
+        "knowsAbout": [
+          "Figma", 
+          "UI/UX Architecture", 
+          "WordPress Core Architecture", 
+          "Lua Scripting", 
+          "Semantic HTML5", 
+          "CSS Optimization", 
+          "Linux Systems Administration", 
+          "Search Engine Optimization (SEO)"
+        ]
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/starscape.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/Sprite.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/Sprite.png">
+
+    <style>
+        #site-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000000;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+            pointer-events: auto;
+        }
+
+        .loader-sprite {
+            width: 80px;
+            height: auto;
+            image-rendering: pixelated;
+            animation: loaderSpin 2s linear infinite;
+        }
+
+        .loader-text {
+            font-family: "Press Start 2P", system-ui, sans-serif;
+            font-size: 14px;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        #site-loader.loaded {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        @keyframes loaderSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="site-loader">
+        <img class="loader-sprite" src="assets/sprite.png" alt="Loading...">
+        <p class="loader-text">VOIDSKULL</p>
+    </div>
+
+    <canvas id="starCanvas"></canvas>
+
+    <div id="clippy-container" class="clippy-wrapper">
+        <div id="reopen-arrow" onclick="reopenBubble()">▲</div>
+        <div class="bubble-container">
+            <div id="clippy-bubble" class="clippy-bubble">
+                <span class="close-btn" onclick="closeBubble()">×</span>
+                <div id="bubble-content"></div>
+            </div>
+        </div>
+        <img id="clippy-sprite" src="assets/sprite.png" alt="Assistant">
+    </div>
+
+    <div id="interests-page" class="page-container">
+        
+        <section class="intro-bio-block">
+            <h2>ABOUT ME</h2>
+            <p>
+                I mostly just play too many videogames. Sometimes I write code and make stuff like this website. Have a look.
+            </p>
+        </section>
+
+        <div class="stream-divider">
+            <div class="divider-line"></div>
+            <img src="assets/Sprite.png" class="inline-skull-icon" alt="Skull Marker">
+            <div class="divider-line"></div>
+        </div>
+
+        <section class="tumblr-block card-variant-car">
+            <div class="block-header">
+                <h1>My Car</h1>
+            </div>
+            
+            <div class="image-frame">
+                <img src="assets/car.jpeg" alt="Subaru WRX Narrowbody Sedan">
+                <div class="frame-overlay">2009 Subaru Wrx</div>
+            </div>
+
+            <p>skkkrrrrrrrrrrrt</p>
+            
+            <table class="metric-table">
+                <thead>
+                    <tr>
+                        <th>Engine Stat</th>
+                        <th>Benchmark Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Power Output</td>
+                        <td>265 hp</td>
+                    </tr>
+                    <tr>
+                        <td>Transmission</td>
+                        <td>5-Speed Manual</td>
+                    </tr>
+                    <tr>
+                        <td>0-60 mph</td>
+                        <td>4.8 seconds</td>
+                    </tr>
+                    <tr>
+                        <td>Year / Model</td>
+                        <td>2009 (Narrowbody)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="mods-container">
+                <h3>CURRENT MODIFICATIONS</h3>
+                <ul class="mods-list">
+                    <li><strong>Turbo-Back Exhaust System</strong> — Upgraded downpipe & full 3 inch exhaust</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="tumblr-block card-variant-fish">
+            <div class="block-header">
+                <h1>Recent Fish</h1>
+            </div>
+
+            <div class="fish-gallery-grid">
+                <div class="fish-frame large-frame">
+                    <img src="assets/flathead.jpeg" alt="Dusky Flathead">
+                    <div class="fish-label">
+                        <span class="fish-name">Dusky Flathead</span>
+                        <span class="fish-size">83 cm</span>
+                    </div>
+                </div>
+                
+                <div class="fish-subgrid">
+                    <div class="fish-frame small-frame">
+                        <img src="assets/salmon.jpeg" alt="Australian Salmon">
+                        <div class="fish-label">
+                            <span class="fish-name">Australian Salmon</span>
+                            <span class="fish-size">49cm</span>
+                        </div>
+                    </div>
+                    <div class="fish-frame small-frame">
+                        <img src="assets/bream.jpeg" alt="Yellow Bream Catch">
+                        <div class="fish-label">
+                            <span class="fish-name">Yellow Bream</span>
+                            <span class="fish-size">43 cm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tumblr-block card-variant-music">
+            <div class="block-header">
+                <h1>Music I'm Listening To</h1>
+            </div>
+            
+            <div class="audio-player-deck">
+                <div class="player-core">
+                    <div class="vinyl-wrapper">
+                        <i class="fa-solid fa-compact-disc vinyl-disk" id="player-vinyl"></i>
+                    </div>
+                    <div class="track-meta">
+                        <h4 id="track-title">SELECT_A_TRACK.SYS</h4>
+                        <p id="track-artist">PLAYLIST INTERACTIVE</p>
+                    </div>
+                </div>
+
+                <canvas id="visualizer-canvas" class="brutalist-canvas-visualizer"></canvas>
+
+                <div class="player-controls">
+                    <button class="player-ctrl-btn" id="btn-prev"><i class="fa-solid fa-backward"></i></button>
+                    <button class="player-ctrl-btn" id="btn-play-toggle"><i class="fa-solid fa-play"></i> PLAY</button>
+                    <button class="player-ctrl-btn" id="btn-next"><i class="fa-solid fa-forward"></i></button>
+                </div>
+
+                <div class="built-in-playlist">
+                    <div class="playlist-track active-track-row" data-src="assets/freakinout.mp3" data-title="FREAKIN OUT" data-artist="Dexter and the Moonrocks">
+                        <span class="track-number">01</span>
+                        <div class="track-info-strings"><h5>FREAKIN OUT</h5><p>Dexter and the Moonrocks</p></div>
+                    </div>
+                    <div class="playlist-track" data-src="assets/222.mp3" data-title="222" data-artist="Kai Banks">
+                        <span class="track-number">02</span>
+                        <div class="track-info-strings"><h5>222</h5><p>Kai Banks</p></div>
+                    </div>
+                    <div class="playlist-track" data-src="assets/earrings.mp3" data-title="EARRINGS" data-artist="Malcolm Todd">
+                        <span class="track-number">03</span>
+                        <div class="track-info-strings"><h5>EARRINGS</h5><p>Malcolm Todd</p></div>
+                    </div>
+                </div>
+
+                <audio id="native-audio-engine" crossorigin="anonymous"></audio>
+            </div>
+        </section>
+
+        <section class="tumblr-block card-variant-tv">
+            <div class="block-header">
+                <h1>TV & Movies</h1>
+            </div>
+            <div class="games-list-container">
+                <div class="game-item">
+                    <div class="game-icon-frame"><i class="fa-solid fa-film"></i></div>
+                    <div class="game-details">
+                        <h4>The Sopranos</h4>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon-frame"><i class="fa-solid fa-clapperboard"></i></div>
+                    <div class="game-details">
+                        <h4>Slow Horses</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tumblr-block card-variant-games">
+            <div class="block-header">
+                <h1>Current Videogames</h1>
+            </div>
+            <div class="games-list-container">
+                <div class="game-item">
+                    <div class="game-icon-frame"><i class="fa-solid fa-gauge-high"></i></div>
+                    <div class="game-details">
+                        <h4>FORZA HORIZON 6</h4>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon-frame"><i class="fa-solid fa-fish-fins"></i></div>
+                    <div class="game-details">
+                        <h4>FISHING PLANET</h4>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon-frame"><i class="fa-solid fa-shuttle-space"></i></div>
+                    <div class="game-details">
+                        <h4>STARFIELD</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="stream-divider">
+            <div class="divider-line"></div>
+            <img src="assets/Sprite.png" class="inline-skull-icon" alt="Skull Marker">
+            <div class="divider-line"></div>
+        </div>
+    </div>
+
+    <div id="cv-page" class="page-container">
+        <section class="tumblr-block">
+            <div class="block-header">
+                <h1>Skills</h1>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8;">
+                <li style="margin-bottom: 12px;">Figma, UI/UX Architecture, and Responsive Layout Design</li>
+                <li style="margin-bottom: 12px;">WordPress Core Architecture and Custom Platform Integrations</li>
+                <li style="margin-bottom: 12px;">Lua Scripting and Custom System Logic Engineering</li>
+                <li style="margin-bottom: 12px;">Semantic HTML5, CSS Optimization, and Cross-Browser Compatibility</li>
+                <li style="margin-bottom: 12px;">Linux Systems Administration and Bash Shell Automation</li>
+                <li style="margin-bottom: 12px;">Cloud Infrastructure Virtualization and Security Auditing</li>
+                <li style="margin-bottom: 12px;">Declarative Prompt Engineering and Context Window Optimization</li>
+                <li style="margin-bottom: 12px;">Multi-Shot Logic Parameters and LLM Integration Operations</li>
+                <li style="margin-bottom: 12px;">Search Engine Optimization (SEO) and Performance Diagnostic Auditing</li>
+            </ul>
+        </section>
+    </div>
+    <div id="projects-page" class="page-container">
+        
+        <section class="intro-bio-block">
+            <h2>MY WORK</h2>
+            <p>
+                A collection of recent web design and development projects, custom UI builds, and digital experiments.
+            </p>
+        </section>
+
+        <div class="stream-divider">
+            <div class="divider-line"></div>
+            <img src="assets/Sprite.png" class="inline-skull-icon" alt="Skull Marker">
+            <div class="divider-line"></div>
+        </div>
+
+        <section class="tumblr-block card-variant-project">
+            <div class="block-header">
+                <h1>Discord Bot: Baldrick</h1>
+            </div>
+            
+            <div class="image-frame">
+                <img src="https://via.placeholder.com/800x600/111111/ffffff?text=Baldrick+Bot+(4:3)" alt="Baldrick Bot Preview">
+                <div class="frame-overlay">Economy & Gambling Simulation</div>
+            </div>
+
+            <p>A multi-functional Discord application centered around virtual economic progression, gambling simulations, and a fully realized recreational fishing module. Engineered to handle state tracking, probabilistic loot drops, and concurrent interactive user sessions seamlessly.</p>
+            
+            <div class="mods-container">
+                <h3>TECH STACK & TOOLS</h3>
+                <ul class="mods-list">
+                    <li><strong>Environment:</strong> Node.js / Discord.js API / JavaScript (JS).</li>
+                    <li><strong>Features:</strong> Slash command interactions, advanced embedded layouts, stateful economic processing, and procedural drop-table mechanics.</li>
+                    <li><strong>Repository:</strong> <a href="https://github.com/your-username/baldrick-bot" target="_blank" class="project-link">github.com/baldrick-bot</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="tumblr-block card-variant-project">
+            <div class="block-header">
+                <h1>Discord Bot: Blob</h1>
+            </div>
+            
+            <div class="image-frame">
+                <img src="https://via.placeholder.com/800x600/111111/ffffff?text=Blob+Context+Engine+(4:3)" alt="Blob Bot Preview">
+                <div class="frame-overlay">Advanced Context & Meme Engine</div>
+            </div>
+
+            <p>A self-learning chat companion that constructs conversational context matrices entirely client-side. Uses custom SQLite schema tracking to build a localized knowledge base from chat history via a multi-order Markov chain shard matrix and word-pair semantic co-occurrence networks. Includes automatic visual asset cataloguing and real-time canvas buffer text overlays based on dynamic user affinity metrics.</p>
+            
+            <div class="mods-container">
+                <h3>TECH STACK & TOOLS</h3>
+                <ul class="mods-list">
+                    <li><strong>Environment:</strong> Node.js / Discord.js v14 / SQLite3 (`better-sqlite3`).</li>
+                    <li><strong>Features:</strong> Markov chain syntax builders, semantic association pooling, programmatic Canvas meme generation, and modular interaction routers.</li>
+                    <li><strong>Repository:</strong> <a href="https://github.com/your-username/blob-context-engine" target="_blank" class="project-link">github.com/blob-context-engine</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="tumblr-block card-variant-project">
+            <div class="block-header">
+                <h1>Voidskull.dev</h1>
+            </div>
+            
+            <div class="image-frame">
+                <img src="https://via.placeholder.com/800x600/111111/ffffff?text=Voidskull.dev+(4:3)" alt="Voidskull Website Preview">
+                <div class="frame-overlay">Personal Portfolio & Playground</div>
+            </div>
+
+            <p>The site you're currently looking at. A custom-engineered portfolio featuring a brutalist retro aesthetic, real-time JS canvas star mapping, and an interactive assistant system. Designed entirely from scratch to act as a personal digital playground.</p>
+            
+            <div class="mods-container">
+                <h3>TECH STACK & TOOLS</h3>
+                <ul class="mods-list">
+                    <li><strong>Design:</strong> Figma prototyping and custom UI/UX architecture.</li>
+                    <li><strong>Development:</strong> Semantic HTML5, CSS optimization, and Vanilla JavaScript (Canvas API).</li>
+                    <li><strong>Repository:</strong> <a href="https://github.com/your-username/portfolio-site" target="_blank" class="project-link">github.com/portfolio-site</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="tumblr-block card-variant-project" style="opacity: 0.7;">
+            <div class="block-header">
+                <h1>[ PROJECT DESIGNATION: TBD ]</h1>
+            </div>
+            
+            <div class="image-frame">
+                <img src="https://via.placeholder.com/800x600/0a0a0a/333333?text=AWAITING+DATA...(4:3)" alt="Future Project Placeholder">
+                <div class="frame-overlay">Status: In Development</div>
+            </div>
+
+            <p><em>Classified. Workspace reserved for an upcoming build. Check back later for deployment details.</em></p>
+            
+            <div class="mods-container">
+                <h3>TECH STACK & TOOLS</h3>
+                <ul class="mods-list">
+                    <li><strong>Status:</strong> Architecture pending.</li>
+                    <li><strong>ETA:</strong> Unknown.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="stream-divider">
+            <div class="divider-line"></div>
+            <img src="assets/Sprite.png" class="inline-skull-icon" alt="Skull Marker">
+            <div class="divider-line"></div>
+        </div>
+
+    </div>
+
+    <script src="js/starscape.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
