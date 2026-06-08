@@ -134,6 +134,9 @@ button, a, .clickable {
     image-rendering: pixelated;
     animation: float 3s ease-in-out infinite;
     display: block;
+
+    /* FIXED: Cleaned up to be a much softer, less intense shadow profile */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }
 
 @keyframes float {
@@ -251,6 +254,8 @@ button, a, .clickable {
     width: 45px;
     image-rendering: pixelated;
     opacity: 0.85;
+    /* FIXED: Cleaned up shadow configuration here as well */
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
 }
 
 /* --- Premium Brutalist Feed Blocks --- */
@@ -304,6 +309,7 @@ button, a, .clickable {
     width: 100%;
     border: 3px solid #000000;
     margin-bottom: 25px;
+    padding-top:10px;
     background-color: #e8e8e8;
     overflow: hidden;
     box-sizing: border-box;
@@ -826,11 +832,12 @@ button, a, .clickable {
 
     #reopen-arrow {
         margin-bottom: 0;
-        order: 1; 
+        order: 2; /* FIXED: Pushed to order 2 to stack directly ABOVE the skull sprite */
     }
     
     #clippy-sprite {
-        order: 2;
+        order: 1; /* FIXED: Dropped to order 1 to sit safely at the bottom baseline */
+        width: 60px; /* FIXED: Made the skull notably smaller on small screens */
     }
 
     .bubble-container {
@@ -930,7 +937,7 @@ button, a, .clickable {
     }
     
     #clippy-sprite {
-        width: 75px;
+        width: 45px; /* FIXED: Scaled way down for crisp layout preservation on extra narrow screens */
     }
 
     .audio-player-deck {
